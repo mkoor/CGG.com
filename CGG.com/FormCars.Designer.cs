@@ -35,10 +35,10 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.listViewCars = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.NameFirm = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.City = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Telephone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Model = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Color = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.NumberState = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBoxNumberState = new System.Windows.Forms.TextBox();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.labelNumberState = new System.Windows.Forms.Label();
@@ -48,6 +48,7 @@
             this.labelColor = new System.Windows.Forms.Label();
             this.comboBoxColor = new System.Windows.Forms.ComboBox();
             this.Logo = new System.Windows.Forms.PictureBox();
+            this.Year = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,10 +115,11 @@
             // 
             this.listViewCars.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
-            this.NameFirm,
-            this.Address,
-            this.City,
-            this.Telephone});
+            this.Model,
+            this.Color,
+            this.Price,
+            this.NumberState,
+            this.Year});
             this.listViewCars.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listViewCars.FullRowSelect = true;
             this.listViewCars.GridLines = true;
@@ -136,24 +138,24 @@
             this.ID.Text = "ID";
             this.ID.Width = 39;
             // 
-            // NameFirm
+            // Model
             // 
-            this.NameFirm.Text = "Название фирмы";
-            this.NameFirm.Width = 107;
+            this.Model.Text = "Модель";
+            this.Model.Width = 107;
             // 
-            // Address
+            // Color
             // 
-            this.Address.Text = "Адрес";
-            this.Address.Width = 123;
+            this.Color.Text = "Цвет";
+            this.Color.Width = 123;
             // 
-            // City
+            // Price
             // 
-            this.City.Text = "Город";
+            this.Price.Text = "Цена";
             // 
-            // Telephone
+            // NumberState
             // 
-            this.Telephone.Text = "Номер телефона";
-            this.Telephone.Width = 121;
+            this.NumberState.Text = "Госномер";
+            this.NumberState.Width = 121;
             // 
             // textBoxNumberState
             // 
@@ -242,6 +244,10 @@
             this.Logo.TabIndex = 52;
             this.Logo.TabStop = false;
             // 
+            // Year
+            // 
+            this.Year.Text = "Год выпуска";
+            // 
             // FormCars
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -281,10 +287,10 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.ListView listViewCars;
         private System.Windows.Forms.ColumnHeader ID;
-        private System.Windows.Forms.ColumnHeader NameFirm;
-        private System.Windows.Forms.ColumnHeader Address;
-        private System.Windows.Forms.ColumnHeader City;
-        private System.Windows.Forms.ColumnHeader Telephone;
+        private System.Windows.Forms.ColumnHeader Model;
+        private System.Windows.Forms.ColumnHeader Color;
+        private System.Windows.Forms.ColumnHeader Price;
+        private System.Windows.Forms.ColumnHeader NumberState;
         private System.Windows.Forms.TextBox textBoxNumberState;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label labelNumberState;
@@ -293,5 +299,6 @@
         private System.Windows.Forms.Label labelModel;
         private System.Windows.Forms.Label labelColor;
         private System.Windows.Forms.ComboBox comboBoxColor;
+        private System.Windows.Forms.ColumnHeader Year;
     }
 }

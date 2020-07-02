@@ -28,5 +28,11 @@ namespace CGG.com
             Form formCars = new FormCars();
             formCars.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form formAvailability = new FormAvailability();
+            formAvailability.Show();
+        }
     }
 }

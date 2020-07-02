@@ -62,57 +62,17 @@ namespace CGG.com
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            try
+            if (comboBoxCar.SelectedItem != null && comboBoxFirm.SelectedItem != null)
             {
-                 AvailabilitySet availabilitySet = new AvailabilitySet();
-                try
-                {
-                    FirmsSet firmsSet = new FirmsSet();
-
-                    firmsSet.NameFirm = comboBoxFirm;
-
-                    if (firmsSet.NameFirm == "" || firmsSet.Address == "" || firmsSet.City == "" || firmsSet.Telephone == "")
-                    {
-                        throw new Exception("Обязательные поля не заполнены!");
-                    }
-
-                    Program.cGG.AvailabilitySet.Add(availabilitySet);
-                    Program.cGG.SaveChanges();
-                    ShowAvailability();
-                }
-                catch (Exception ex) { MessageBox.Show("" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                AvailabilitySet availabilitySet = new AvailabilitySet();
+                availabilitySet.IdCar = Convert.ToInt32(comboBoxCar.SelectedItem.ToString().Split('.')[0]);
+                availabilitySet.IdFirm = Convert.ToInt32(comboBoxFirm.SelectedItem.ToString().Split('.')[0]);
             }
-            catch (Exception ex) { MessageBox.Show("" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            else MessageBox.Show("Выберите автомобиль и фирму!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void comboBoxFirm_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxFirm.SelectedIndex == 0)
-            {
-                listViewAvailability.Visible = true;
-                labelFirm.Visible = true;
-                comboBoxFirm.Visible = true;
-                labelCar.Visible = true;
-                comboBoxCar.Visible = true;
-
-                listViewAvailability2.Visible = false;
-
-                comboBoxFirm.SelectedItem = null;
-                comboBoxCar.SelectedItem = null;
-            }
-            else if (comboBoxFirm.SelectedIndex == 1)
-            {
-                listViewAvailability2.Visible = true;
-                labelFirm.Visible = true;
-                comboBoxFirm.Visible = true;
-                labelCar.Visible = true;
-                comboBoxCar.Visible = true;
-
-                listViewAvailability.Visible = false;
-
-                comboBoxFirm.SelectedItem = null;
-                comboBoxCar.SelectedItem = null;
-            }         
+        {  
         }
 
         private void listViewAvailability_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,18 +93,7 @@ namespace CGG.com
 
         private void listViewAvailability2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listViewAvailability2.SelectedItems.Count == 1)
-            {
-                AvailabilitySet availabilitySet = listViewAvailability2.SelectedItems[0].Tag as AvailabilitySet;
-
-                comboBoxCar.Text = availabilitySet.CarsSet.Model;
-                comboBoxFirm.Text = availabilitySet.FirmsSet.NameFirm;
-            }
-            else
-            {
-                comboBoxFirm.SelectedItem = null;
-                comboBoxCar.SelectedItem = null;
-            }
+            
         }
     }
 }

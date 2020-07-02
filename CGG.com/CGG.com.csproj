@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,16 +55,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AvailabilitySet.cs">
+      <DependentUpon>ModelCGG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarsSet.cs">
+      <DependentUpon>ModelCGG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FirmsSet.cs">
+      <DependentUpon>ModelCGG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormAvailability.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormAvailability.Designer.cs">
+      <DependentUpon>FormAvailability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCars.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCars.Designer.cs">
+      <DependentUpon>FormCars.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFirms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFirms.Designer.cs">
+      <DependentUpon>FormFirms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelCGG.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCGG.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelCGG.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCGG.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelCGG.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCGG.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormAvailability.resx">
+      <DependentUpon>FormAvailability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCars.resx">
+      <DependentUpon>FormCars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFirms.resx">
+      <DependentUpon>FormFirms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,7 +125,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EntityDeploy Include="ModelCGG.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelCGG.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelCGG.edmx.diagram">
+      <DependentUpon>ModelCGG.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +147,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\96-963045_sun-closed-call-for-drop-offs-or-pick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelCGG.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCGG.edmx</DependentUpon>
+      <LastGenOutput>ModelCGG.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelCGG.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCGG.edmx</DependentUpon>
+      <LastGenOutput>ModelCGG.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище CGG.comModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AvailabilitySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFirm" Type="int" Nullable="false" />
+          <Property Name="IdCar" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CarsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Model" Type="nvarchar(max)" />
+          <Property Name="Color" Type="nvarchar(max)" />
+          <Property Name="Price" Type="int" />
+          <Property Name="NumberState" Type="nvarchar(max)" />
+          <Property Name="Year" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FirmsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameFirm" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Telephone" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_AvailabilitySet_CarsSet">
+          <End Role="CarsSet" Type="Self.CarsSet" Multiplicity="1" />
+          <End Role="AvailabilitySet" Type="Self.AvailabilitySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvailabilitySet">
+              <PropertyRef Name="IdCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvailabilitySet_FirmsSet">
+          <End Role="FirmsSet" Type="Self.FirmsSet" Multiplicity="1" />
+          <End Role="AvailabilitySet" Type="Self.AvailabilitySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FirmsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvailabilitySet">
+              <PropertyRef Name="IdFirm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище CGGcomModelContainer">
+          <EntitySet Name="AvailabilitySet" EntityType="Self.AvailabilitySet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarsSet" EntityType="Self.CarsSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FirmsSet" EntityType="Self.FirmsSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AvailabilitySet_CarsSet" Association="Self.FK_AvailabilitySet_CarsSet">
+            <End Role="CarsSet" EntitySet="CarsSet" />
+            <End Role="AvailabilitySet" EntitySet="AvailabilitySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AvailabilitySet_FirmsSet" Association="Self.FK_AvailabilitySet_FirmsSet">
+            <End Role="FirmsSet" EntitySet="FirmsSet" />
+            <End Role="AvailabilitySet" EntitySet="AvailabilitySet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CGG.comModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AvailabilitySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFirm" Type="Int32" Nullable="false" />
+          <Property Name="IdCar" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CarsSet" Relationship="Self.FK_AvailabilitySet_CarsSet" FromRole="AvailabilitySet" ToRole="CarsSet" />
+          <NavigationProperty Name="FirmsSet" Relationship="Self.FK_AvailabilitySet_FirmsSet" FromRole="AvailabilitySet" ToRole="FirmsSet" />
+        </EntityType>
+        <EntityType Name="CarsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="NumberState" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AvailabilitySet" Relationship="Self.FK_AvailabilitySet_CarsSet" FromRole="CarsSet" ToRole="AvailabilitySet" />
+        </EntityType>
+        <EntityType Name="FirmsSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameFirm" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AvailabilitySet" Relationship="Self.FK_AvailabilitySet_FirmsSet" FromRole="FirmsSet" ToRole="AvailabilitySet" />
+        </EntityType>
+        <Association Name="FK_AvailabilitySet_CarsSet">
+          <End Role="CarsSet" Type="Self.CarsSet" Multiplicity="1" />
+          <End Role="AvailabilitySet" Type="Self.AvailabilitySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvailabilitySet">
+              <PropertyRef Name="IdCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvailabilitySet_FirmsSet">
+          <End Role="FirmsSet" Type="Self.FirmsSet" Multiplicity="1" />
+          <End Role="AvailabilitySet" Type="Self.AvailabilitySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FirmsSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AvailabilitySet">
+              <PropertyRef Name="IdFirm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CGGEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AvailabilitySet" EntityType="Self.AvailabilitySet" />
+          <EntitySet Name="CarsSet" EntityType="Self.CarsSet" />
+          <EntitySet Name="FirmsSet" EntityType="Self.FirmsSet" />
+          <AssociationSet Name="FK_AvailabilitySet_CarsSet" Association="Self.FK_AvailabilitySet_CarsSet">
+            <End Role="CarsSet" EntitySet="CarsSet" />
+            <End Role="AvailabilitySet" EntitySet="AvailabilitySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AvailabilitySet_FirmsSet" Association="Self.FK_AvailabilitySet_FirmsSet">
+            <End Role="FirmsSet" EntitySet="FirmsSet" />
+            <End Role="AvailabilitySet" EntitySet="AvailabilitySet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CGGcomModelContainer" CdmEntityContainer="CGGEntities">
+          <EntitySetMapping Name="AvailabilitySet">
+            <EntityTypeMapping TypeName="CGG.comModel.AvailabilitySet">
+              <MappingFragment StoreEntitySet="AvailabilitySet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdFirm" ColumnName="IdFirm" />
+                <ScalarProperty Name="IdCar" ColumnName="IdCar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarsSet">
+            <EntityTypeMapping TypeName="CGG.comModel.CarsSet">
+              <MappingFragment StoreEntitySet="CarsSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="NumberState" ColumnName="NumberState" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FirmsSet">
+            <EntityTypeMapping TypeName="CGG.comModel.FirmsSet">
+              <MappingFragment StoreEntitySet="FirmsSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameFirm" ColumnName="NameFirm" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -8,6 +8,7 @@ namespace CGG.com
 {
     static class Program
     {
+        public static CGGEntities cGG = new CGGEntities();
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -16,7 +17,7 @@ namespace CGG.com
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormMenu());
         }
     }
 }

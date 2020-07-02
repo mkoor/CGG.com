@@ -67,6 +67,9 @@ namespace CGG.com
                 AvailabilitySet availabilitySet = new AvailabilitySet();
                 availabilitySet.IdCar = Convert.ToInt32(comboBoxCar.SelectedItem.ToString().Split('.')[0]);
                 availabilitySet.IdFirm = Convert.ToInt32(comboBoxFirm.SelectedItem.ToString().Split('.')[0]);
+                Program.cGG.AvailabilitySet.Add(availabilitySet);
+                Program.cGG.SaveChanges();
+                ShowAvailability();
             }
             else MessageBox.Show("Выберите автомобиль и фирму!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -94,6 +97,40 @@ namespace CGG.com
         private void listViewAvailability2_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            if (comboBoxCar.SelectedItem != null && comboBoxFirm.SelectedItem != null)
+            {
+                AvailabilitySet availabilitySet = new AvailabilitySet();
+                availabilitySet.IdCar = Convert.ToInt32(comboBoxCar.SelectedItem.ToString().Split('.')[0]);
+                availabilitySet.IdFirm = Convert.ToInt32(comboBoxFirm.SelectedItem.ToString().Split('.')[0]);
+                Program.cGG.SaveChanges();
+                ShowAvailability();
+            }
+            else MessageBox.Show("Выберите автомобиль и фирму!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void buttonDel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listViewAvailability.SelectedItems.Count == 1)
+                {
+                    AvailabilitySet availabilitySet = listViewAvailability.SelectedItems[0].Tag as AvailabilitySet;
+                    Program.cGG.AvailabilitySet.Remove(availabilitySet);
+                    Program.cGG.SaveChanges();
+                    ShowAvailability();
+                }
+
+                comboBoxCar.SelectedItem = null;
+                comboBoxFirm.SelectedItem = null;
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно удалить, эта запись используется!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+            }
         }
     }
 }
